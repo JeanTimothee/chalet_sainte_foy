@@ -1,11 +1,21 @@
 <h1><%= @chalet.name %></h1>
-<ul class="booking-list">
-  <% @bookings.each do |booking| %>
-      <li class="booking"><%= booking.start_date %> to <%= booking.end_date %>
-      <%= link_to "Delete",
-      chalet_booking_path(booking),
-      method: :delete,
-      data: {confirm: "Are you sure?" } %>
-      </li>
+<% if @chalet.bookings %>
+  <ul class="booking-list">
+    <% @bookings.each do |booking| %>
+        <li class="booking"><%= booking.start_date %> to <%= booking.end_date %>
+        <%= link_to "Delete",
+        booking_path(booking),
+        method: :delete,
+        data: {confirm: "Are you sure?" } %>
+        </li>
+    <% end %>
+  </ul>
+<% end %>
+<div id="calendar-form" data-bookings="<%= @bookings.to_json %>">
+  <%= simple_form_for [@chalet, @booking] do |f| %>
+  <%= f.input :start_date, as: :string, label: false, input_html: { id: "start-date", class: "d-none" }  %>
+  <%= f.input :end_date, as: :string, label: false, input_html: { id: "end-date", class: "d-none" } %>
+  <%= f.input :name  %>
+  <%= f.submit "Enter a Reservation", class: "btn btn-flat btn-block" %>
   <% end %>
-</ul>
+</div>
