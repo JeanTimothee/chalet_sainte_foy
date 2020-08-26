@@ -10,7 +10,7 @@ puts "Users destroyed"
 user = User.create!(email: 'registimothee@gmail.com', password: "123456")
 puts "#{User.count} user(s) created!"
 
-chalet = Chalet.create!(name: 'Chalet Sainte Foy', user_id: "#{user.id}")
+chalet = Chalet.create!(name: 'Chalet Sainte-Foy', user_id: "#{user.id}")
 puts "#{chalet.name} created!"
 
 booking1 = Booking.create!(chalet_id: chalet.id, start_date: Date.new(2020,12,5), end_date: Date.new(2020,12,12))

@@ -1,4 +1,1 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
-
-<%= link_to "Chalet Sainte-Foy", chalet_path(Chalet.all.first) %>
+<h1><%= link_to Chalet.all.first.name, chalet_path(Chalet.all.first) %></h1>
