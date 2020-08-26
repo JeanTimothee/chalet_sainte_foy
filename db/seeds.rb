@@ -13,6 +13,6 @@ puts "#{User.count} user(s) created!"
 chalet = Chalet.create!(name: 'Chalet Sainte-Foy', user_id: "#{user.id}")
 puts "#{chalet.name} created!"
 
-booking1 = Booking.create!(chalet_id: chalet.id, start_date: Date.new(2020,09,5), end_date: Date.new(2020,09,12), name: "Régis")
-booking2 = Booking.create!(chalet_id: chalet.id, start_date: Date.new(2020,09,19), end_date: Date.new(2020,09,26), name: "P-E")
+booking1 = Booking.create!(chalet_id: chalet.id, start_date: Date.new(2020,9,5), end_date: Date.new(2020,9,12), name: "Régis")
+booking2 = Booking.create!(chalet_id: chalet.id, start_date: Date.new(2020,9,19), end_date: Date.new(2020,9,26), name: "P-E")
 puts "#{Booking.all.count} bookings created!"
