@@ -10,7 +10,7 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.chalet = Chalet.find(params[:chalet_id])
     if @booking.save
-      flash[:notice] = "Dates blocked!"
+      flash[:notice] = "Booking saved!"
       redirect_to chalet_path(@booking.chalet)
     else
       @chalet = @booking.chalet
