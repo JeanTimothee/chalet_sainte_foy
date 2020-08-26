@@ -1,21 +1,28 @@
-<h1><%= @chalet.name %></h1>
-<% if @chalet.bookings %>
-  <ul class="booking-list">
-    <% @bookings.each do |booking| %>
-        <li class="booking"><%= booking.start_date %> to <%= booking.end_date %>
-        <%= link_to "Delete",
-        booking_path(booking),
-        method: :delete,
-        data: {confirm: "Are you sure?" } %>
-        </li>
-    <% end %>
-  </ul>
-<% end %>
+<h1 id="title"><%= @chalet.name %></h1>
+<h4 class="booking-title">Add a Booking</h4>
 <div id="calendar-form" data-bookings="<%= @bookings.to_json %>">
   <%= simple_form_for [@chalet, @booking] do |f| %>
   <%= f.input :start_date, as: :string, label: false, input_html: { id: "start-date", class: "d-none" }  %>
   <%= f.input :end_date, as: :string, label: false, input_html: { id: "end-date", class: "d-none" } %>
-  <%= f.input :name  %>
-  <%= f.submit "Enter a Reservation", class: "btn btn-flat btn-block" %>
+  <%= f.input :name, label: false, placeholder: "Name" %>
+  <%= f.submit "Submit Booking", class: "btn btn-flat btn-block", id: "submit-btn" %>
   <% end %>
 </div>
+<h4 class="booking-title">Bookings</h4>
+<% if @chalet.bookings %>
+  <div class="bookings-box">
+    <ul class="booking-list">
+      <% @bookings.each do |booking| %>
+        <div class="d-flex justify-content-around">
+          <p class="booking"><%= booking.start_date.strftime("%d/%m/%Y") %> to <%= booking.end_date.strftime("%d/%m/%Y") %>
+          </p>
+          <%= link_to booking_path(booking),
+          method: :delete,
+          data: {confirm: "Are you sure?" } do %>
+          <i class="fas fa-trash"></i>
+          <% end %>
+        </div>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
