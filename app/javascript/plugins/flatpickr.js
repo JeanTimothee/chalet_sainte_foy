@@ -14,7 +14,7 @@ const initFlatpickr = () => {
       obj.to = element.end_date;
       disabledRangeDate.push(obj);
       });
-      flatpickr("#start-date", {
+      const flatpickrInstance = flatpickr("#start-date", {
         altInput: true,
         inline: true,
         mode: "range",
@@ -23,6 +23,10 @@ const initFlatpickr = () => {
         "plugins": [new rangePlugin( { input: "#end-date"})],
         disable: disabledRangeDate
       });
+      const button = document.getElementById('cancel-dates-btn')
+      button.addEventListener('click', () => {
+        flatpickrInstance.clear()
+      })
     }
   }
 
