@@ -7,7 +7,7 @@ puts "Chalets destroyed"
 User.destroy_all
 puts "Users destroyed"
 
-user = User.create!(email: 'registimothee@gmail.com', password: "123456")
+user = User.create!(email: 'chaletsaintefoy@gmail.com', password: "123456")
 puts "#{User.count} user(s) created!"
 
 chalet = Chalet.create!(name: 'Chalet Sainte-Foy', user_id: "#{user.id}")
